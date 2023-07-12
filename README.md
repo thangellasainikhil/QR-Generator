@@ -1,10 +1,5 @@
 # QR Payments System ( QR-GENERATOR )
 
-   This section of the "QR Payments System" is a web app which generates QR Code. This project is a part of our academic Semester-END Course Based Project.
-
-## Follow this link to view the hosted version of this project:
-Click Here -> [QRPS-QR-GENERATOR](https://qrps-qr-generator.herokuapp.com/)
-
 ## Problem
 
    We took this problem statement by experiencing the problem to make UPI payments in our college canteen. Lack of internet services in our college motivated us to try building a prototype to this problem.
