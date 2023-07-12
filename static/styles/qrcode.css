@@ -1,0 +1,19 @@
+.qr{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+}
+h6{
+  font-size: .8rem;
+}
+@media screen and (max-width: 480px) {
+img {
+    width:100%;
+    }
+}
+@media screen and (min-width: 481px) {
+img {
+    width:40%;
+    }
+}

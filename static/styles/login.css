@@ -1,0 +1,16 @@
+.login{
+    margin: auto;
+    padding:30px;
+    background-color: whitesmoke;
+    overflow: hidden;
+}
+body {  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;
+    flex-direction: column;  
+}  
+body, html {  
+    height: 90%;  
+    margin: 0;  
+} 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/styles/stalls.css">
+        <title>Shops</title>
+    </head>
+    <body >
+        <nav  class="navbar navbar-light bg-light">
+            <a class="navbar-brand m-2" href="/"><strong>QR PAY</strong></a>
+            <div class="me-4">
+              {% if status=="LOGIN" %}
+                <a href="/getStalls">LOGIN</a>
+              {% else %}
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{status}}
+                </button>
+                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </nav>
+        <div class="container">
+            <h2 class="mx-auto my-3 text-center"><strong>STALLS</strong></h2>
+        <form>
+        <div class=" stalls mx-auto my-5">
+            {% for stall_name in stalls_names %}
+            <div class="card shadow cards rounded ">
+                <img class=" w-100 img-fluid rounded" src="{{url_for('static', filename='/images/'+stall_name+'.jpeg')}}" alt="Unavailable">
+                <div class="card-body p-2">
+                    <h5>{{stall_name}}</h5>
+                </div>
+                <div>
+                    <button class="btn btn-primary float-end m-2 " type="submit" formaction="{{'/orderFood/'+stall_name}}" >Order</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        </form>
+        </div>
+        
+        <!-- Don't write below this line -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+    </body>
+</html>

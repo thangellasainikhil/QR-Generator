@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles/orderfood.css">
+    <script src="../static/script/orderFood.js"></script>
+    <title>Order Food</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <nav  class="navbar navbar-light bg-light">
+        <a class="navbar-brand m-2" href="/"><strong>QR PAY</strong></a>
+        <div class="me-4">
+          {% if status=="LOGIN" %}
+            <a href="/getStalls">LOGIN</a>
+          {% else %}
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{username}}
+            </button>
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </nav>
+    <form action="/enterPin/{{stall_name}}" method="post">
+
+        <div class="text-center mx-auto m-5">
+            <input class="form-control w-50 d-inline border border-dark" type="text" name="username" id="username" placeholder="username" value="{{username}}" readonly />
+        </div>
+        <table class="table text-center">
+            <div class="container">
+                <div class="row text-center ">
+            <div class="col-3"><h4><strong>Item</strong></h4></div>
+            <div class="col-3"><h4><strong>Price</strong></h4></div>
+            <div class="col-3"> <h4><strong>Quantity</strong></h4></div>
+            <div class="col-3"> <h4><strong>Sub Total</strong></h4></div>
+        </div>
+                {% for i in range(no_of_food_items) %}
+                <div class="row text-center mb-3">
+                    <div class="col-3" id="item-{{i}}_name">{{food_items[i][0]}}</div>
+                    <div class="col-3">
+                       <strong id="item-{{i}}_price">{{food_items[i][1]}}</strong>
+                    </div>
+                    <div class="qty_button col-3 ">
+                        <button  name="item-{{i}}" type="button" onclick="decrementQuantity(this)">-</button>
+                        <input class="text-center w-25 " type="number" name="{{food_items[i][0]}}" id="item-{{i}}" value="0" readonly />
+                        <button  name="item-{{i}}" type="button" onclick="incrementQuantity(this)">+</button>
+                    </div>
+                    <div class="col-3">
+                        <strong class="text-center" type="number" name="item-{{i}}_subTotal" id="item-{{i}}_subTotal">0</strong>
+                    </div>
+                </div>
+                <hr style="width:100%;text-align:left;margin-left:0">
+                {% endfor %}
+                <div class="row text-center">
+                    <div class="col-3"></div>
+                    <div class="col-3"></div>
+                    <div class="col-3"><h4><strong>Grand Total</strong></h4></div>
+                    <div class="col-3"><strong class="text-success" name="grandTotal" id="grandTotal">0</strong></div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-3"></div>
+                    <div class="col-3"></div>
+                    <div class="col-3"></div>
+                    <div class="col-3"><button class="btn btn-success mt-4" type="submit">VERIFY</button></div>
+                </div>
+                
+
+            </div>
+        </table>
+    </form>
+
+    <!-- Don't write below this line -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
+
+</body>
+</html>

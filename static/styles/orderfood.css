@@ -1,0 +1,7 @@
+.qty_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ input.field{min-width:70px;}
+
